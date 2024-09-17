@@ -107,6 +107,7 @@
             invoiceTotal += parseFloat(lineItemTotal);
 
             const delimiter = "|";
+            const file_delimiter = "[]";
             let printLine = [
                 formatDateYYYYMMDD(document.getElementById("INVOICE_DATE").value),
                 document.getElementById("INVOICE_NUMBER").value,
@@ -134,7 +135,7 @@
                 document.getElementById("CLIENT_MATTER_ID").value
             ].join(delimiter);
 
-            fileContents += printLine + "\n";
+            fileContents += printLine + file_delimiter+"\n";
             document.getElementById("INVOICE_TOTAL").textContent = invoiceTotal.toFixed(2);
             document.getElementById("LINE_ITEM_NUMBER").textContent = lineItemNumber;
 
