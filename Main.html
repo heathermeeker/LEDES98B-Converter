@@ -59,11 +59,11 @@
         <label for="LINE_ITEM_DESCRIPTION">Description:</label>
         <input type="text" id="LINE_ITEM_DESCRIPTION" name="LINE_ITEM_DESCRIPTION" required><br>
 
-        <label for="TIMEKEEPER_NAME">Timekeeper Name:</label>
+        <label for="TIMEKEEPER_NAME">Timekeeper Name (Last, First):</label>
         <input type="text" id="TIMEKEEPER_NAME" name="TIMEKEEPER_NAME" required><br>
 
-        <label for="TIMEKEEPER_CLASSIFICATION">Timekeeper Classification:</label>
-        <input type="text" id="TIMEKEEPER_CLASSIFICATION" name="TIMEKEEPER_CLASSIFICATION" required><br>
+        <label for="TIMEKEEPER_CLASSIFICATION">Timekeeper Classification </label>
+        <input type="text" id="TIMEKEEPER_CLASSIFICATION" name="TIMEKEEPER_CLASSIFICATION" value ="PARTNR" required>See <a href"https://ledes.org/loc-revised-timekeeper-classification-codes-august-2014"> (e.g. PARTNR, ASSOC) </a>:<br>
 
         <label for="LINE_ITEM_NUMBER_OF_UNITS">Line Item Units:</label>
         <input type="number" id="LINE_ITEM_NUMBER_OF_UNITS" name="LINE_ITEM_NUMBER_OF_UNITS" required><br>
@@ -71,7 +71,7 @@
         <label for="LINE_ITEM_UNIT_COST">Line Item Unit Cost:</label>
         <input type="number" id="LINE_ITEM_UNIT_COST" name="LINE_ITEM_UNIT_COST" required><br>
 
-        <label for="LINE_ITEM_TASK_CODE">Task Code:</label>
+        <label for="LINE_ITEM_TASK_CODE">Task Code(UTBMS):</label>
         <input type="text" id="LINE_ITEM_TASK_CODE" name="LINE_ITEM_TASK_CODE" required><br>
 
         <label for="LINE_ITEM_EXPENSE_CODE">Expense Code:</label>
@@ -80,8 +80,8 @@
         <label for="LINE_ITEM_ACTIVITY_CODE">Activity Code:</label>
         <input type="text" id="LINE_ITEM_ACTIVITY_CODE" name="LINE_ITEM_ACTIVITY_CODE" required> See <a href="ledes.org/wp-content/uploads/2016/04/2013-LOC-Revised-UTBMS-Activity-Codes.pdf">Activity Codes</a>(A104 = Review/Analyze) <br>
 
-        <label for="EXP_FEE_INV_ADJ_TYPE">Expense/Fee/Inv/Adj: </label>
-        <input type="text" id="EXP_FEE_INV_ADJ_TYPE" name="EXP_FEE_INV_ADJ_TYPE" required><br>
+        <label for="EXP_FEE_INV_ADJ_TYPE">Expense(E)/Fee(F)/Expense Adj.(IE)/Fee Adj.(IF): </label>
+        <input type="text" id="EXP_FEE_INV_ADJ_TYPE" name="EXP_FEE_INV_ADJ_TYPE" value="F" required><br>
 
         <label for="LINE_ITEM_ADJUSTMENT_AMOUNT">Line Item Adjustment Amount:</label>
         <input type="number" id="LINE_ITEM_ADJUSTMENT_AMOUNT" name="LINE_ITEM_ADJUSTMENT_AMOUNT" value="0"><br>
