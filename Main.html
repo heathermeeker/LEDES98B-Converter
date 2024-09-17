@@ -75,10 +75,196 @@
         <input type="text" id="LINE_ITEM_TASK_CODE" name="LINE_ITEM_TASK_CODE" required><br>
 
         <label for="LINE_ITEM_EXPENSE_CODE">Expense Code:</label>
-        <input type="text" id="LINE_ITEM_EXPENSE_CODE" name="LINE_ITEM_EXPENSE_CODE" required> See <a href="https://ledes.org/wp-content/uploads/2015/07/2013-LOC-Revised-UTBMS-Expense-Codes.pdf">Expense Codes</a> <br>
+        <input type="text" id="LINE_ITEM_EXPENSE_CODE" name="LINE_ITEM_EXPENSE_CODE" required> See <a href="https://ledes.org/wp-content/uploads/2015/07/2013-LOC-Revised-UTBMS-Expense-Codes.pdf">Expense Codes</a> (<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bananafoot LEDES Converter</title>
+</head>
+<body>
+    <h2>Bananafoot LEDES Converter</h2>
+    <h3><i>"Bananafoot: Making your law practice slightly less tedious"</i></h3>
+    <p>This program allows you to enter information to create a LEDES 1998B billing file. LEDES is a standard format for legal invoicing. 
+    For information on the hell-spawn that is the LEDES format see <a href="https://ledes.org/ledes-98b-format">LEDES Format</a>.  
+    LEDES is a text, pipe-delimited format. It was designed by lawyers, which explains a lot. When you click "Done" the program will allow you to save your LEDES file.</p>
+
+    <form id="ledesForm">
+        <p>
+            <label for="INVOICE_TOTAL">Invoice Total:</label>
+            <span id="INVOICE_TOTAL">0</span>
+        </p>
+        <p>
+            <label for="LINE_ITEM_NUMBER">Lines Total:</label>
+            <span id="LINE_ITEM_NUMBER">0</span>
+        </p>
+
+        <!-- The fields that are the same for the entire invoice -->
+        <label for="INVOICE_NUMBER">Invoice Number:</label>
+        <input type="text" id="INVOICE_NUMBER" name="INVOICE_NUMBER" required><br>
+
+        <label for="INVOICE_DATE">Invoice Date:</label>
+        <input type="date" id="INVOICE_DATE" name="INVOICE_DATE" required><br>
+
+        <label for="CLIENT_ID">Client ID:</label>
+        <input type="text" id="CLIENT_ID" name="CLIENT_ID" required><br>
+
+        <label for="CLIENT_MATTER_ID">Client Matter ID:</label>
+        <input type="text" id="CLIENT_MATTER_ID" name="CLIENT_MATTER_ID" required><br>
+
+        <label for="LAW_FIRM_MATTER_ID">Law Firm Matter:</label>
+        <input type="text" id="LAW_FIRM_MATTER_ID" name="LAW_FIRM_MATTER_ID" required><br>
+
+        <label for="LAW_FIRM_ID">Law Firm:</label>
+        <input type="text" id="LAW_FIRM_ID" name="LAW_FIRM_ID" required><br>
+
+        <label for="BILLING_START_DATE">Billing Start Date:</label>
+        <input type="date" id="BILLING_START_DATE" name="BILLING_START_DATE" required><br>
+
+        <label for="BILLING_END_DATE">Billing End Date:</label>
+        <input type="date" id="BILLING_END_DATE" name="BILLING_END_DATE" required><br>
+
+        <label for="INVOICE_DESCRIPTION">Invoice Description:</label>
+        <input type="text" id="INVOICE_DESCRIPTION" name="INVOICE_DESCRIPTION" value="Legal Services"><br>
+
+        <h3>Line Item Fields:</h3>
+        <label for="LINE_ITEM_DATE">Line Item Date:</label>
+        <input type="date" id="LINE_ITEM_DATE" name="LINE_ITEM_DATE" required><br>
+
+        <label for="TIMEKEEPER_ID">Timekeeper ID:</label>
+        <input type="text" id="TIMEKEEPER_ID" name="TIMEKEEPER_ID" required><br>
+
+        <label for="LINE_ITEM_DESCRIPTION">Description:</label>
+        <input type="text" id="LINE_ITEM_DESCRIPTION" name="LINE_ITEM_DESCRIPTION" required><br>
+
+        <label for="TIMEKEEPER_NAME">Timekeeper Name (Last, First):</label>
+        <input type="text" id="TIMEKEEPER_NAME" name="TIMEKEEPER_NAME" required><br>
+
+        <label for="TIMEKEEPER_CLASSIFICATION">Timekeeper Classification </label>
+        <input type="text" id="TIMEKEEPER_CLASSIFICATION" name="TIMEKEEPER_CLASSIFICATION" value ="PARTNR" required>See <a href"https://ledes.org/loc-revised-timekeeper-classification-codes-august-2014"> (e.g. PARTNR, ASSOC) </a>:<br>
+
+        <label for="LINE_ITEM_NUMBER_OF_UNITS">Line Item Units:</label>
+        <input type="number" id="LINE_ITEM_NUMBER_OF_UNITS" name="LINE_ITEM_NUMBER_OF_UNITS" required><br>
+
+        <label for="LINE_ITEM_UNIT_COST">Line Item Unit Cost:</label>
+        <input type="number" id="LINE_ITEM_UNIT_COST" name="LINE_ITEM_UNIT_COST" required><br>
+
+        <label for="LINE_ITEM_TASK_CODE">Task Code(UTBMS):</label>
+        <input type="text" id="LINE_ITEM_TASK_CODE" name="LINE_ITEM_TASK_CODE" required><br>
+
+        <label for="LINE_ITEM_EXPENSE_CODE">Expense Code:</label>
+        <input type="text" id="LINE_ITEM_EXPENSE_CODE" name="LINE_ITEM_EXPENSE_CODE" required> See <a href="https://ledes.org/wp-content/uploads/2015/07/2013-LOC-Revised-UTBMS-Expense-Codes.pdf">Expense Codes</a> (X112 = Delivery Service) <br>
 
         <label for="LINE_ITEM_ACTIVITY_CODE">Activity Code:</label>
-        <input type="text" id="LINE_ITEM_ACTIVITY_CODE" name="LINE_ITEM_ACTIVITY_CODE" required> See <a href="ledes.org/wp-content/uploads/2016/04/2013-LOC-Revised-UTBMS-Activity-Codes.pdf">Activity Codes</a>(A104 = Review/Analyze) <br>
+        <input type="text" id="LINE_ITEM_ACTIVITY_CODE" name="LINE_ITEM_ACTIVITY_CODE" required> See <a href="ledes.org/wp-content/uploads/2016/04/2013-LOC-Revised-UTBMS-Activity-Codes.pdf">Activity Codes</a> (A104 = Review/Analyze) <br>
+
+        <label for="EXP_FEE_INV_ADJ_TYPE">Expense(E)/Fee(F)/Expense Adj.(IE)/Fee Adj.(IF): </label>
+        <input type="text" id="EXP_FEE_INV_ADJ_TYPE" name="EXP_FEE_INV_ADJ_TYPE" value="F" required><br>
+
+        <label for="LINE_ITEM_ADJUSTMENT_AMOUNT">Line Item Adjustment Amount:</label>
+        <input type="number" id="LINE_ITEM_ADJUSTMENT_AMOUNT" name="LINE_ITEM_ADJUSTMENT_AMOUNT" value="0"><br>
+
+        <button type="button" onclick="lineItemSubmit()">Submit Line Item</button><br>
+        <button type="button" onclick="invoiceSubmit()">Done</button>
+    </form>
+
+    <script>
+        let fileContents = "";
+        let lineItemNumber = 0;
+        let invoiceTotal = 0;
+
+        function setDefaults() {
+            const today = new Date();
+            document.getElementById("INVOICE_DATE").value = today.toISOString().split('T')[0];
+            getPreviousMonthDates(today);
+        }
+
+        function updateLineItemTotal() {
+            const units = parseFloat(document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value) || 0;
+            const cost = parseFloat(document.getElementById("LINE_ITEM_UNIT_COST").value) || 0;
+            const adjustmentAmount = parseFloat(document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value) || 0;
+            const total = (units * cost) + adjustmentAmount;
+            return total.toFixed(2);
+        }
+
+        function lineItemSubmit() {
+            const lineItemTotal = updateLineItemTotal();
+            lineItemNumber++;
+            invoiceTotal += parseFloat(lineItemTotal);
+
+            const delimiter = "|";
+            let printLine = [
+                formatDateYYYYMMDD(document.getElementById("INVOICE_DATE").value),
+                document.getElementById("INVOICE_NUMBER").value,
+                document.getElementById("CLIENT_ID").value,
+                document.getElementById("LAW_FIRM_MATTER_ID").value,
+                invoiceTotal.toFixed(2),
+                formatDateYYYYMMDD(document.getElementById("BILLING_START_DATE").value),
+                formatDateYYYYMMDD(document.getElementById("BILLING_END_DATE").value),
+                document.getElementById("INVOICE_DESCRIPTION").value,
+                lineItemNumber,
+                document.getElementById("EXP_FEE_INV_ADJ_TYPE").value,
+                document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value,
+                document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value,
+                lineItemTotal,
+                formatDateYYYYMMDD(document.getElementById("LINE_ITEM_DATE").value),
+                document.getElementById("LINE_ITEM_TASK_CODE").value,
+                document.getElementById("LINE_ITEM_EXPENSE_CODE").value,
+                document.getElementById("LINE_ITEM_ACTIVITY_CODE").value,
+                document.getElementById("TIMEKEEPER_ID").value,
+                document.getElementById("LINE_ITEM_DESCRIPTION").value,
+                document.getElementById("LAW_FIRM_ID").value,
+                document.getElementById("LINE_ITEM_UNIT_COST").value,
+                document.getElementById("TIMEKEEPER_NAME").value,
+                document.getElementById("TIMEKEEPER_CLASSIFICATION").value,
+                document.getElementById("CLIENT_MATTER_ID").value
+            ].join(delimiter);
+
+            fileContents += printLine + "\n";
+            document.getElementById("INVOICE_TOTAL").textContent = invoiceTotal.toFixed(2);
+            document.getElementById("LINE_ITEM_NUMBER").textContent = lineItemNumber;
+
+            // Reset line item fields
+            document.getElementById("LINE_ITEM_DATE").value = "";
+            document.getElementById("TIMEKEEPER_ID").value = "";
+            document.getElementById("LINE_ITEM_DESCRIPTION").value = "";
+            document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value = "";
+            document.getElementById("LINE_ITEM_UNIT_COST").value = "";
+            document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value = "0";
+        }
+
+        function invoiceSubmit() {
+            const blob = new Blob([fileContents], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'ledes_98b_output.txt';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            alert("Your file has been saved to LEDES.txt. Thanks for using the Bananafoot LEDES conversion program. Now go and re-think your life choices.");
+        }
+
+        function getPreviousMonthDates(date) {
+            const firstDayOfGivenMonth = new Date(date.getFullYear(), date.getMonth(), 1);
+            const lastDayOfPreviousMonth = new Date(firstDayOfGivenMonth);
+            lastDayOfPreviousMonth.setDate(lastDayOfPreviousMonth.getDate() - 1);
+            document.getElementById("BILLING_END_DATE").value = lastDayOfPreviousMonth.toISOString().split('T')[0];
+
+            const firstDayOfPreviousMonth = new Date(lastDayOfPreviousMonth.getFullYear(), lastDayOfPreviousMonth.getMonth(), 1);
+            document.getElementById("BILLING_START_DATE").value = firstDayOfPreviousMonth.toISOString().split('T')[0];
+        }
+
+        function formatDateYYYYMMDD(dateString) {
+            return dateString.replace(/-/g, '');
+        }
+
+        window.onload = setDefaults;
+    </script>
+</body>
+</html> <br>
+
+        <label for="LINE_ITEM_ACTIVITY_CODE">Activity Code:</label>
+        <input type="text" id="LINE_ITEM_ACTIVITY_CODE" name="LINE_ITEM_ACTIVITY_CODE" required> See <a href="ledes.org/wp-content/uploads/2016/04/2013-LOC-Revised-UTBMS-Activity-Codes.pdf">Activity Codes</a> (A104 = Review/Analyze) <br>
 
         <label for="EXP_FEE_INV_ADJ_TYPE">Expense(E)/Fee(F)/Expense Adj.(IE)/Fee Adj.(IF): </label>
         <input type="text" id="EXP_FEE_INV_ADJ_TYPE" name="EXP_FEE_INV_ADJ_TYPE" value="F" required><br>
