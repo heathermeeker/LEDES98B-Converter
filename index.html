@@ -86,11 +86,11 @@
                 <div class="col-md-3">
                     <label for="TIMEKEEPER_NAME" class="form-label">Timekeeper Name:</label>
                     <input type="text" class="form-control" id="TIMEKEEPER_NAME" name="TIMEKEEPER_NAME" required>
-                </div>
+                (Last, First)</div>
                 <div class="col-md-3">
                     <label for="TIMEKEEPER_ID" class="form-label">Timekeeper ID:</label>
                     <input type="text" class="form-control" id="TIMEKEEPER_ID" name="TIMEKEEPER_ID" required>
-                (Last, First)</div>
+                </div>
               
                
                 <div class="col-md-3">
@@ -175,7 +175,7 @@ INVOICE_DATE|INVOICE_NUMBER|CLIENT_ID|LAW_FIRM_MATTER_ID|INVOICE_TOTAL|BILLING_S
                 document.getElementById("INVOICE_NUMBER").value,
                 document.getElementById("CLIENT_ID").value,
                 document.getElementById("LAW_FIRM_MATTER_ID").value,
-                invoiceTotal.toFixed(2),
+                document.getElementById("INVOICE_TOTAL").value,
                 formatDateYYYYMMDD(document.getElementById("BILLING_START_DATE").value),
                 formatDateYYYYMMDD(document.getElementById("BILLING_END_DATE").value),
                 document.getElementById("INVOICE_DESCRIPTION").value,
@@ -198,7 +198,7 @@ INVOICE_DATE|INVOICE_NUMBER|CLIENT_ID|LAW_FIRM_MATTER_ID|INVOICE_TOTAL|BILLING_S
             ].join(delimiter);
 
             fileContents += printLine + file_delimiter + "\n";
-            document.getElementById("INVOICE_TOTAL").textContent = invoiceTotal.toFixed(2);
+            document.getElementById("INVOICE_TOTAL_CALC").textContent = invoiceTotal.toFixed(2);
             document.getElementById("LINE_ITEM_NUMBER").textContent = lineItemNumber;
 
             // Reset line item fields
