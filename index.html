@@ -19,49 +19,49 @@
         <h3 class="text-muted mb-4"><i>"Bananafoot: Making your law practice slightly less tedious"</i></h3>
         <p class="mb-4">This program allows you to enter information to create a LEDES 1998B billing file. LEDES is a standard format for legal invoicing. 
         For information on the hell-spawn that is the LEDES format see <a href="https://ledes.org/ledes-98b-format" target="_blank">LEDES Format</a>.  
-        LEDES is a text, pipe-delimited format. It was designed by lawyers, which explains a lot. When you click "Done" the program will allow you to save your LEDES file.</p>
+        LEDES is a text, pipe-delimited format. It was designed by lawyers, which explains a lot. When you click "Done" the program will allow you to save your LEDES file. SORRY, BUT YOU NEED TO ENTER THE INVOICE TOTAL. THE RUNNING TOTAL HERE IS PROVIDED TO CHECK YOUR WORK ONLY.</p>
 
         <form id="ledesForm" class="mb-4">
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <p><strong>Invoice Total:</strong> <span id="INVOICE_TOTAL" class="badge bg-primary">0</span></p>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <p><strong>Lines Total:</strong> <span id="LINE_ITEM_NUMBER" class="badge bg-secondary">0</span></p>
                 </div>
             </div>
 
             <h4 class="mb-3">Invoice Information</h4>
             <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="INVOICE_NUMBER" class="form-label">Invoice Number:</label>
                     <input type="text" class="form-control" id="INVOICE_NUMBER" name="INVOICE_NUMBER" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="INVOICE_DATE" class="form-label">Invoice Date:</label>
                     <input type="date" class="form-control" id="INVOICE_DATE" name="INVOICE_DATE" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="CLIENT_ID" class="form-label">Client ID:</label>
                     <input type="text" class="form-control" id="CLIENT_ID" name="CLIENT_ID" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="CLIENT_MATTER_ID" class="form-label">Client Matter ID:</label>
                     <input type="text" class="form-control" id="CLIENT_MATTER_ID" name="CLIENT_MATTER_ID" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="LAW_FIRM_MATTER_ID" class="form-label">Law Firm Matter:</label>
                     <input type="text" class="form-control" id="LAW_FIRM_MATTER_ID" name="LAW_FIRM_MATTER_ID" required>
                 </div>
-                <div class="col-md-6">
-                    <label for="LAW_FIRM_ID" class="form-label">Law Firm:</label>
+                <div class="col-md-3">
+                    <label for="LAW_FIRM_ID" class="form-label">Law Firm ID (EIN):</label>
                     <input type="text" class="form-control" id="LAW_FIRM_ID" name="LAW_FIRM_ID" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="BILLING_START_DATE" class="form-label">Billing Start Date:</label>
                     <input type="date" class="form-control" id="BILLING_START_DATE" name="BILLING_START_DATE" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="BILLING_END_DATE" class="form-label">Billing End Date:</label>
                     <input type="date" class="form-control" id="BILLING_END_DATE" name="BILLING_END_DATE" required>
                 </div>
@@ -73,55 +73,58 @@
 
             <h4 class="mt-4 mb-3">Line Item Fields</h4>
             <div class="row g-3">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="LINE_ITEM_DATE" class="form-label">Line Item Date:</label>
                     <input type="date" class="form-control" id="LINE_ITEM_DATE" name="LINE_ITEM_DATE" required>
                 </div>
-                <div class="col-md-6">
-                    <label for="TIMEKEEPER_ID" class="form-label">Timekeeper ID:</label>
-                    <input type="text" class="form-control" id="TIMEKEEPER_ID" name="TIMEKEEPER_ID" required>
-                </div>
-                <div class="col-12">
-                    <label for="LINE_ITEM_DESCRIPTION" class="form-label">Description:</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_DESCRIPTION" name="LINE_ITEM_DESCRIPTION" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="TIMEKEEPER_NAME" class="form-label">Timekeeper Name (Last, First):</label>
+                <div class="col-md-3">
+                    <label for="TIMEKEEPER_NAME" class="form-label">Timekeeper Name:</label>
                     <input type="text" class="form-control" id="TIMEKEEPER_NAME" name="TIMEKEEPER_NAME" required>
                 </div>
-                <div class="col-md-6">
-                    <label for="TIMEKEEPER_CLASSIFICATION" class="form-label">Timekeeper Classification:</label>
+                <div class="col-md-3">
+                    <label for="TIMEKEEPER_ID" class="form-label">Timekeeper ID:</label>
+                    <input type="text" class="form-control" id="TIMEKEEPER_ID" name="TIMEKEEPER_ID" required>
+                (Last, First)</div>
+              
+               
+                <div class="col-md-3">
+                    <label for="TIMEKEEPER_CLASSIFICATION" class="form-label">Timekeeper Class:</label>
                     <input type="text" class="form-control" id="TIMEKEEPER_CLASSIFICATION" name="TIMEKEEPER_CLASSIFICATION" value="PARTNR" required>
                     <small class="form-text text-muted">See <a href="https://ledes.org/loc-revised-timekeeper-classification-codes-august-2014" target="_blank">Classification Codes</a> (e.g. PARTNR, ASSOC)</small>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="LINE_ITEM_NUMBER_OF_UNITS" class="form-label">Line Item Units:</label>
                     <input type="number" class="form-control" id="LINE_ITEM_NUMBER_OF_UNITS" name="LINE_ITEM_NUMBER_OF_UNITS" required>
                 </div>
-                <div class="col-md-6">
+                   <div class="col-9">
+                    <label for="LINE_ITEM_DESCRIPTION" class="form-label">Description:</label>
+                    <input type="text" class="form-control" id="LINE_ITEM_DESCRIPTION" name="LINE_ITEM_DESCRIPTION" required>
+                </div>
+               
+                <div class="col-md-3">
                     <label for="LINE_ITEM_UNIT_COST" class="form-label">Line Item Unit Cost:</label>
                     <input type="number" class="form-control" id="LINE_ITEM_UNIT_COST" name="LINE_ITEM_UNIT_COST" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="LINE_ITEM_TASK_CODE" class="form-label">Task Code (UTBMS):</label>
                     <input type="text" class="form-control" id="LINE_ITEM_TASK_CODE" name="LINE_ITEM_TASK_CODE" required>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="LINE_ITEM_EXPENSE_CODE" class="form-label">Expense Code:</label>
                     <input type="text" class="form-control" id="LINE_ITEM_EXPENSE_CODE" name="LINE_ITEM_EXPENSE_CODE" required>
                     <small class="form-text text-muted">See <a href="https://ledes.org/wp-content/uploads/2015/07/2013-LOC-Revised-UTBMS-Expense-Codes.pdf" target="_blank">Expense Codes</a> (E112 = FedEx/UPS)</small>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <label for="LINE_ITEM_ACTIVITY_CODE" class="form-label">Activity Code:</label>
                     <input type="text" class="form-control" id="LINE_ITEM_ACTIVITY_CODE" name="LINE_ITEM_ACTIVITY_CODE" required>
                     <small class="form-text text-muted">See <a href="https://ledes.org/wp-content/uploads/2016/04/2013-LOC-Revised-UTBMS-Activity-Codes.pdf" target="_blank">Activity Codes</a> (A104 = Review/Analyze)</small>
                 </div>
-                <div class="col-md-6">
-                    <label for="EXP_FEE_INV_ADJ_TYPE" class="form-label">Expense(E)/Fee(F)/Expense Adj.(IE)/Fee Adj.(IF):</label>
+                <div class="col-md-3">
+                    <label for="EXP_FEE_INV_ADJ_TYPE" class="form-label">Expense(E)/Fee(F):</label>
                     <input type="text" class="form-control" id="EXP_FEE_INV_ADJ_TYPE" name="EXP_FEE_INV_ADJ_TYPE" value="F" required>
                 </div>
-                <div class="col-md-6">
-                    <label for="LINE_ITEM_ADJUSTMENT_AMOUNT" class="form-label">Line Item Adjustment Amount:</label>
+                <div class="col-md-3">
+                    <label for="LINE_ITEM_ADJUSTMENT_AMOUNT" class="form-label">Adjustment Amount:</label>
                     <input type="number" class="form-control" id="LINE_ITEM_ADJUSTMENT_AMOUNT" name="LINE_ITEM_ADJUSTMENT_AMOUNT" value="0">
                 </div>
             </div>
