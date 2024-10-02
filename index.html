@@ -23,13 +23,19 @@
 
         <form id="ledesForm" class="mb-4">
             <div class="row mb-3">
-                <div class="col-md-3">
-                    <p><strong>Invoice Total:</strong> <span id="INVOICE_TOTAL" class="badge bg-primary">0</span></p>
-                </div>
+               
                 <div class="col-md-3">
                     <p><strong>Lines Total:</strong> <span id="LINE_ITEM_NUMBER" class="badge bg-secondary">0</span></p>
                 </div>
-            </div>
+              <div class="col-md-3">
+                    <label for="INVOICE_TOTAL" class="form-label">Invoice Total (Input):</label>
+                    <input type="text" class="form-control" id="INVOICE_TOTAL" name="INVOICE_TOTAL" required>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Invoice Total (Running):</strong> <span id="INVOICE_TOTAL_CALC" class="badge bg-primary">0</span></p>
+                </div>
+                
+               
 
             <h4 class="mb-3">Invoice Information</h4>
             <div class="row g-3">
