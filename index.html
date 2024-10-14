@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,32 +11,47 @@
         body {
             padding-top: 20px;
             padding-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .form-control {
+            font-size: 14px;
+        }
+
+        .line-item {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #f8f9fa;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2 class="mb-4">Bananafoot LEDES Converter</h2>
         <h3 class="text-muted mb-4"><i>"Bananafoot: Making your law practice slightly less tedious"</i></h3>
-        <p class="mb-4">This program allows you to enter information to create a LEDES 1998B billing file. LEDES is a standard format for legal invoicing. 
-        For information on the hell-spawn that is the LEDES format see <a href="https://ledes.org/ledes-98b-format" target="_blank">LEDES Format</a>.  
-        LEDES is a text, pipe-delimited format. It was designed by lawyers, which explains a lot. When you click "Done" the program will allow you to save your LEDES file. SORRY, BUT YOU NEED TO ENTER THE INVOICE TOTAL. THE RUNNING TOTAL HERE IS PROVIDED TO CHECK YOUR WORK ONLY.</p>
+        <p class="mb-4">This program allows you to enter information to create a LEDES 1998B billing file. LEDES is a
+            standard format for legal invoicing.
+            For information on the hell-spawn that is the LEDES format see <a href="https://ledes.org/ledes-98b-format"
+                target="_blank">LEDES Format</a>.
+            LEDES is a text, pipe-delimited format. It was designed by lawyers, which explains a lot. When you click
+            "Generate LEDES File" the program will allow you to save your LEDES file.</p>
 
         <form id="ledesForm" class="mb-4">
             <div class="row mb-3">
-               
                 <div class="col-md-3">
                     <p><strong>Lines Total:</strong> <span id="LINE_ITEM_NUMBER" class="badge bg-secondary">0</span></p>
                 </div>
-              <div class="col-md-3">
-                    <label for="INVOICE_TOTAL" class="form-label">Invoice Total (Input):</label>
+                <div class="col-md-3">
+                    <label for="INVOICE_TOTAL" class="form-label">Invoice Total:</label>
                     <input type="text" class="form-control" id="INVOICE_TOTAL" name="INVOICE_TOTAL" required>
                 </div>
                 <div class="col-md-6">
-                    <p><strong>Invoice Total (Running):</strong> <span id="INVOICE_TOTAL_CALC" class="badge bg-primary">0</span></p>
+                    <p><strong>Invoice Total (Running):</strong> <span id="INVOICE_TOTAL_CALC"
+                            class="badge bg-primary">0</span></p>
                 </div>
-                
-               
+            </div>
 
             <h4 class="mb-3">Invoice Information</h4>
             <div class="row g-3">
@@ -73,153 +89,172 @@
                 </div>
                 <div class="col-12">
                     <label for="INVOICE_DESCRIPTION" class="form-label">Invoice Description:</label>
-                    <input type="text" class="form-control" id="INVOICE_DESCRIPTION" name="INVOICE_DESCRIPTION" value="Legal Services">
+                    <input type="text" class="form-control" id="INVOICE_DESCRIPTION" name="INVOICE_DESCRIPTION"
+                        value="Legal Services">
                 </div>
             </div>
 
-            <h4 class="mt-4 mb-3">Line Item Fields</h4>
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_DATE" class="form-label">Line Item Date:</label>
-                    <input type="date" class="form-control" id="LINE_ITEM_DATE" name="LINE_ITEM_DATE" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="TIMEKEEPER_NAME" class="form-label">Timekeeper Name:</label>
-                    <input type="text" class="form-control" id="TIMEKEEPER_NAME" name="TIMEKEEPER_NAME" required>
-                (Last, First)</div>
-                <div class="col-md-3">
-                    <label for="TIMEKEEPER_ID" class="form-label">Timekeeper ID:</label>
-                    <input type="text" class="form-control" id="TIMEKEEPER_ID" name="TIMEKEEPER_ID" required>
-                </div>
-              
-               
-                <div class="col-md-3">
-                    <label for="TIMEKEEPER_CLASSIFICATION" class="form-label">Timekeeper Class:</label>
-                    <input type="text" class="form-control" id="TIMEKEEPER_CLASSIFICATION" name="TIMEKEEPER_CLASSIFICATION" value="PARTNR" required>
-                    <small class="form-text text-muted">See <a href="https://ledes.org/loc-revised-timekeeper-classification-codes-august-2014" target="_blank">Classification Codes</a> (e.g. PARTNR, ASSOC)</small>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_NUMBER_OF_UNITS" class="form-label">Line Item Units:</label>
-                    <input type="number" class="form-control" id="LINE_ITEM_NUMBER_OF_UNITS" name="LINE_ITEM_NUMBER_OF_UNITS" required>
-                </div>
-                   <div class="col-9">
-                    <label for="LINE_ITEM_DESCRIPTION" class="form-label">Description:</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_DESCRIPTION" name="LINE_ITEM_DESCRIPTION" required>
-                </div>
-               
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_UNIT_COST" class="form-label">Line Item Unit Cost:</label>
-                    <input type="number" class="form-control" id="LINE_ITEM_UNIT_COST" name="LINE_ITEM_UNIT_COST" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_TASK_CODE" class="form-label">Task Code (UTBMS):</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_TASK_CODE" name="LINE_ITEM_TASK_CODE" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_EXPENSE_CODE" class="form-label">Expense Code:</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_EXPENSE_CODE" name="LINE_ITEM_EXPENSE_CODE" required>
-                    <small class="form-text text-muted">See <a href="https://ledes.org/wp-content/uploads/2015/07/2013-LOC-Revised-UTBMS-Expense-Codes.pdf" target="_blank">Expense Codes</a> (E112 = FedEx/UPS)</small>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_ACTIVITY_CODE" class="form-label">Activity Code:</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_ACTIVITY_CODE" name="LINE_ITEM_ACTIVITY_CODE" required>
-                    <small class="form-text text-muted">See <a href="https://ledes.org/wp-content/uploads/2016/04/2013-LOC-Revised-UTBMS-Activity-Codes.pdf" target="_blank">Activity Codes</a> (A104 = Review/Analyze)</small>
-                </div>
-                <div class="col-md-3">
-                    <label for="EXP_FEE_INV_ADJ_TYPE" class="form-label">Expense(E)/Fee(F):</label>
-                    <input type="text" class="form-control" id="EXP_FEE_INV_ADJ_TYPE" name="EXP_FEE_INV_ADJ_TYPE" value="F" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_ADJUSTMENT_AMOUNT" class="form-label">Adjustment Amount:</label>
-                    <input type="number" class="form-control" id="LINE_ITEM_ADJUSTMENT_AMOUNT" name="LINE_ITEM_ADJUSTMENT_AMOUNT" value="0">
-                </div>
-            </div>
+            <h4 class="mt-4 mb-3">Line Items</h4>
+            <div id="lineItemsContainer"></div>
+            <button type="button" class="btn btn-secondary mt-2" onclick="addLineItem()">Add Line Item</button>
 
             <div class="mt-4">
-                <button type="button" class="btn btn-primary" onclick="lineItemSubmit()">Submit Line Item</button>
-                <button type="button" class="btn btn-success" onclick="invoiceSubmit()">Done</button>
+                <button type="button" class="btn btn-success" onclick="generateLEDESFile()">Generate LEDES File</button>
             </div>
         </form>
     </div>
     <script src="https://js.puter.com/v2/"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        let fileContents = "LEDES1998B[]INVOICE_DATE|INVOICE_NUMBER|CLIENT_ID|LAW_FIRM_MATTER_ID|INVOICE_TOTAL|BILLING_START_DATE|BILLING_END_DATE|INVOICE_DESCRIPTION|LINE_ITEM_NUMBER|EXP/FEE/INV_ADJ_TYPE|LINE_ITEM_NUMBER_OF_UNITS|LINE_ITEM_ADJUSTMENT_AMOUNT|LINE_ITEM_TOTAL|LINE_ITEM_DATE|LINE_ITEM_TASK_CODE|LINE_ITEM_EXPENSE_CODE|LINE_ITEM_ACTIVITY_CODE|TIMEKEEPER_ID|LINE_ITEM_DESCRIPTION|LAW_FIRM_ID|LINE_ITEM_UNIT_COST|TIMEKEEPER_NAME|TIMEKEEPER_CLASSIFICATION|CLIENT_MATTER_ID[]";
-        let lineItemNumber = 0;
-        let invoiceTotal = 0;
+        let lineItems = [];
+        let savedData = {};
+
+        async function initializeApp() {
+            await loadSavedData();
+            setDefaults();
+            addLineItem();
+        }
+
+        async function loadSavedData() {
+            try {
+                const data = await puter.kv.get('ledesConverterData');
+                if (data) {
+                    savedData = JSON.parse(data);
+                    Object.keys(savedData).forEach(key => {
+                        const element = document.getElementById(key);
+                        if (element) {
+                            element.value = savedData[key];
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Error loading saved data:', error);
+            }
+        }
+
+        async function saveData() {
+            const formElements = document.querySelectorAll('#ledesForm input, #ledesForm select');
+            formElements.forEach(element => {
+                savedData[element.id] = element.value;
+            });
+            try {
+                await puter.kv.set('ledesConverterData', JSON.stringify(savedData));
+            } catch (error) {
+                console.error('Error saving data:', error);
+            }
+        }
 
         function setDefaults() {
             const today = new Date();
-            document.getElementById("INVOICE_DATE").value = today.toISOString().split('T')[0];
-            getPreviousMonthDates(today);
+            if (!document.getElementById("INVOICE_DATE").value) {
+                document.getElementById("INVOICE_DATE").value = today.toISOString().split('T')[0];
+            }
+            if (!document.getElementById("BILLING_START_DATE").value || !document.getElementById("BILLING_END_DATE").value) {
+                getPreviousMonthDates(today);
+            }
         }
 
-        function updateLineItemTotal() {
-            const units = parseFloat(document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value) || 0;
-            const cost = parseFloat(document.getElementById("LINE_ITEM_UNIT_COST").value) || 0;
-            const adjustmentAmount = parseFloat(document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value) || 0;
-            const total = (units * cost) + adjustmentAmount;
-            return total.toFixed(2);
+        function addLineItem() {
+            const lineItem = {
+                LINE_ITEM_DATE: "",
+                TIMEKEEPER_NAME: "",
+                TIMEKEEPER_ID: "",
+                TIMEKEEPER_CLASSIFICATION: "PARTNR",
+                LINE_ITEM_NUMBER_OF_UNITS: "",
+                LINE_ITEM_DESCRIPTION: "",
+                LINE_ITEM_UNIT_COST: "",
+                LINE_ITEM_TASK_CODE: "",
+                LINE_ITEM_EXPENSE_CODE: "",
+                LINE_ITEM_ACTIVITY_CODE: "",
+                EXP_FEE_INV_ADJ_TYPE: "F",
+                LINE_ITEM_ADJUSTMENT_AMOUNT: "0"
+            };
+            lineItems.push(lineItem);
+            renderLineItems();
         }
 
-        function lineItemSubmit() {
-            const lineItemTotal = updateLineItemTotal();
-            lineItemNumber++;
-            invoiceTotal += parseFloat(lineItemTotal);
-
-            const delimiter = "|";
-            const file_delimiter = "[]";
-            let printLine = [
-                formatDateYYYYMMDD(document.getElementById("INVOICE_DATE").value),
-                document.getElementById("INVOICE_NUMBER").value,
-                document.getElementById("CLIENT_ID").value,
-                document.getElementById("LAW_FIRM_MATTER_ID").value,
-                document.getElementById("INVOICE_TOTAL").value,
-                formatDateYYYYMMDD(document.getElementById("BILLING_START_DATE").value),
-                formatDateYYYYMMDD(document.getElementById("BILLING_END_DATE").value),
-                document.getElementById("INVOICE_DESCRIPTION").value,
-                lineItemNumber,
-                document.getElementById("EXP_FEE_INV_ADJ_TYPE").value,
-                document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value,
-                document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value,
-                lineItemTotal,
-                formatDateYYYYMMDD(document.getElementById("LINE_ITEM_DATE").value),
-                document.getElementById("LINE_ITEM_TASK_CODE").value,
-                document.getElementById("LINE_ITEM_EXPENSE_CODE").value,
-                document.getElementById("LINE_ITEM_ACTIVITY_CODE").value,
-                document.getElementById("TIMEKEEPER_ID").value,
-                document.getElementById("LINE_ITEM_DESCRIPTION").value,
-                document.getElementById("LAW_FIRM_ID").value,
-                document.getElementById("LINE_ITEM_UNIT_COST").value,
-                document.getElementById("TIMEKEEPER_NAME").value,
-                document.getElementById("TIMEKEEPER_CLASSIFICATION").value,
-                document.getElementById("CLIENT_MATTER_ID").value
-            ].join(delimiter);
-
-            fileContents += printLine + file_delimiter + "\n";
-            document.getElementById("INVOICE_TOTAL_CALC").textContent = invoiceTotal.toFixed(2);
-            document.getElementById("LINE_ITEM_NUMBER").textContent = lineItemNumber;
-
-            // Reset line item fields
-            document.getElementById("LINE_ITEM_DATE").value = "";
-            //These fields should persist for useability, for most users, -- uncomment if you don't prefer that
-            //document.getElementById("TIMEKEEPER_ID").value = "";
-            //document.getElementById("LINE_ITEM_DESCRIPTION").value = "";
-            document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value = "";
-            document.getElementById("LINE_ITEM_UNIT_COST").value = "";
-            document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value = "0";
+        function renderLineItems() {
+            const container = document.getElementById('lineItemsContainer');
+            container.innerHTML = '';
+            lineItems.forEach((item, index) => {
+                const lineItemHtml = createLineItemHtml(item, index);
+                container.innerHTML += lineItemHtml;
+            });
         }
 
-        function invoiceSubmit() {
-            const blob = new Blob([fileContents], { type: 'text/plain' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'ledes_98b_output.txt';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            alert("Your file has been saved. Thanks for using the Bananafoot LEDES conversion program. Now go and re-think your life choices.");
+        function createLineItemHtml(item, index) {
+            return `
+                <div class="line-item">
+                    <h5>Line Item ${index + 1}</h5>
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <label for="LINE_ITEM_DATE_${index}" class="form-label">Line Item Date:</label>
+                            <input type="date" class="form-control" id="LINE_ITEM_DATE_${index}" value="${item.LINE_ITEM_DATE}" onchange="updateLineItem(${index}, 'LINE_ITEM_DATE', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="TIMEKEEPER_NAME_${index}" class="form-label">Timekeeper Name:</label>
+                            <input type="text" class="form-control" id="TIMEKEEPER_NAME_${index}" value="${item.TIMEKEEPER_NAME}" onchange="updateLineItem(${index}, 'TIMEKEEPER_NAME', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="TIMEKEEPER_ID_${index}" class="form-label">Timekeeper ID:</label>
+                            <input type="text" class="form-control" id="TIMEKEEPER_ID_${index}" value="${item.TIMEKEEPER_ID}" onchange="updateLineItem(${index}, 'TIMEKEEPER_ID', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="TIMEKEEPER_CLASSIFICATION_${index}" class="form-label">Timekeeper Class:</label>
+                            <input type="text" class="form-control" id="TIMEKEEPER_CLASSIFICATION_${index}" value="${item.TIMEKEEPER_CLASSIFICATION}" onchange="updateLineItem(${index}, 'TIMEKEEPER_CLASSIFICATION', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LINE_ITEM_NUMBER_OF_UNITS_${index}" class="form-label">Line Item Units:</label>
+                            <input type="number" class="form-control" id="LINE_ITEM_NUMBER_OF_UNITS_${index}" value="${item.LINE_ITEM_NUMBER_OF_UNITS}" onchange="updateLineItem(${index}, 'LINE_ITEM_NUMBER_OF_UNITS', this.value)" required>
+                        </div>
+                        <div class="col-9">
+                            <label for="LINE_ITEM_DESCRIPTION_${index}" class="form-label">Description:</label>
+                            <input type="text" class="form-control" id="LINE_ITEM_DESCRIPTION_${index}" value="${item.LINE_ITEM_DESCRIPTION}" onchange="updateLineItem(${index}, 'LINE_ITEM_DESCRIPTION', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LINE_ITEM_UNIT_COST_${index}" class="form-label">Line Item Unit Cost:</label>
+                            <input type="number" class="form-control" id="LINE_ITEM_UNIT_COST_${index}" value="${item.LINE_ITEM_UNIT_COST}" onchange="updateLineItem(${index}, 'LINE_ITEM_UNIT_COST', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LINE_ITEM_TASK_CODE_${index}" class="form-label">Task Code (UTBMS):</label>
+                            <input type="text" class="form-control" id="LINE_ITEM_TASK_CODE_${index}" value="${item.LINE_ITEM_TASK_CODE}" onchange="updateLineItem(${index}, 'LINE_ITEM_TASK_CODE', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LINE_ITEM_EXPENSE_CODE_${index}" class="form-label">Expense Code:</label>
+                            <input type="text" class="form-control" id="LINE_ITEM_EXPENSE_CODE_${index}" value="${item.LINE_ITEM_EXPENSE_CODE}" onchange="updateLineItem(${index}, 'LINE_ITEM_EXPENSE_CODE', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LINE_ITEM_ACTIVITY_CODE_${index}" class="form-label">Activity Code:</label>
+                            <input type="text" class="form-control" id="LINE_ITEM_ACTIVITY_CODE_${index}" value="${item.LINE_ITEM_ACTIVITY_CODE}" onchange="updateLineItem(${index}, 'LINE_ITEM_ACTIVITY_CODE', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="EXP_FEE_INV_ADJ_TYPE_${index}" class="form-label">Expense(E)/Fee(F):</label>
+                            <input type="text" class="form-control" id="EXP_FEE_INV_ADJ_TYPE_${index}" value="${item.EXP_FEE_INV_ADJ_TYPE}" onchange="updateLineItem(${index}, 'EXP_FEE_INV_ADJ_TYPE', this.value)" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="LINE_ITEM_ADJUSTMENT_AMOUNT_${index}" class="form-label">Adjustment Amount:</label>
+                            <input type="number" class="form-control" id="LINE_ITEM_ADJUSTMENT_AMOUNT_${index}" value="${item.LINE_ITEM_ADJUSTMENT_AMOUNT}" onchange="updateLineItem(${index}, 'LINE_ITEM_ADJUSTMENT_AMOUNT', this.value)">
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateLineItem(index, field, value) {
+            lineItems[index][field] = value;
+            updateTotals();
+        }
+
+        function updateTotals() {
+            let total = 0;
+            lineItems.forEach(item => {
+                const units = parseFloat(item.LINE_ITEM_NUMBER_OF_UNITS) || 0;
+                const cost = parseFloat(item.LINE_ITEM_UNIT_COST) || 0;
+                const adjustmentAmount = parseFloat(item.LINE_ITEM_ADJUSTMENT_AMOUNT) || 0;
+                total += (units * cost) + adjustmentAmount;
+            });
+            document.getElementById("INVOICE_TOTAL_CALC").textContent = total.toFixed(2);
+            document.getElementById("LINE_ITEM_NUMBER").textContent = lineItems.length;
         }
 
         function getPreviousMonthDates(date) {
@@ -236,7 +271,89 @@
             return dateString.replace(/-/g, '');
         }
 
-        window.onload = setDefaults;
+        function generateLEDESFile() {
+            if (!validateForm()) {
+                return;
+            }
+
+            let fileContents = "LEDES1998B|INVOICE_DATE|INVOICE_NUMBER|CLIENT_ID|LAW_FIRM_MATTER_ID|INVOICE_TOTAL|BILLING_START_DATE|BILLING_END_DATE|INVOICE_DESCRIPTION|LINE_ITEM_NUMBER|EXP/FEE/INV_ADJ_TYPE|LINE_ITEM_NUMBER_OF_UNITS|LINE_ITEM_ADJUSTMENT_AMOUNT|LINE_ITEM_TOTAL|LINE_ITEM_DATE|LINE_ITEM_TASK_CODE|LINE_ITEM_EXPENSE_CODE|LINE_ITEM_ACTIVITY_CODE|TIMEKEEPER_ID|LINE_ITEM_DESCRIPTION|LAW_FIRM_ID|LINE_ITEM_UNIT_COST|TIMEKEEPER_NAME|TIMEKEEPER_CLASSIFICATION|CLIENT_MATTER_ID[]\n";
+
+            const invoiceTotal = parseFloat(document.getElementById("INVOICE_TOTAL").value);
+            let runningTotal = 0;
+
+            lineItems.forEach((item, index) => {
+                const lineItemTotal = (parseFloat(item.LINE_ITEM_NUMBER_OF_UNITS) * parseFloat(item.LINE_ITEM_UNIT_COST)) + parseFloat(item.LINE_ITEM_ADJUSTMENT_AMOUNT);
+                runningTotal += lineItemTotal;
+
+                const delimiter = "|";
+                const file_delimiter = "[]";
+                let printLine = [
+                    formatDateYYYYMMDD(document.getElementById("INVOICE_DATE").value),
+                    document.getElementById("INVOICE_NUMBER").value,
+                    document.getElementById("CLIENT_ID").value,
+                    document.getElementById("LAW_FIRM_MATTER_ID").value,
+                    invoiceTotal.toFixed(2),
+                    formatDateYYYYMMDD(document.getElementById("BILLING_START_DATE").value),
+                    formatDateYYYYMMDD(document.getElementById("BILLING_END_DATE").value),
+                    document.getElementById("INVOICE_DESCRIPTION").value,
+                    index + 1,
+                    item.EXP_FEE_INV_ADJ_TYPE,
+                    item.LINE_ITEM_NUMBER_OF_UNITS,
+                    item.LINE_ITEM_ADJUSTMENT_AMOUNT,
+                    lineItemTotal.toFixed(2),
+                    formatDateYYYYMMDD(item.LINE_ITEM_DATE),
+                    item.LINE_ITEM_TASK_CODE,
+                    item.LINE_ITEM_EXPENSE_CODE,
+                    item.LINE_ITEM_ACTIVITY_CODE,
+                    item.TIMEKEEPER_ID,
+                    item.LINE_ITEM_DESCRIPTION,
+                    document.getElementById("LAW_FIRM_ID").value,
+                    item.LINE_ITEM_UNIT_COST,
+                    item.TIMEKEEPER_NAME,
+                    item.TIMEKEEPER_CLASSIFICATION,
+                    document.getElementById("CLIENT_MATTER_ID").value
+                ].join(delimiter);
+
+                fileContents += printLine + file_delimiter + "\n";
+            });
+
+            if (Math.abs(runningTotal - invoiceTotal) > 0.01) {
+                alert("Warning: The sum of line items does not match the invoice total. Please check your entries.");
+            }
+
+            saveData();
+            downloadFile(fileContents);
+        }
+
+        function validateForm() {
+            const billingStartDate = new Date(document.getElementById("BILLING_START_DATE").value);
+            const billingEndDate = new Date(document.getElementById("BILLING_END_DATE").value);
+
+            for (let i = 0; i < lineItems.length; i++) {
+                const lineItemDate = new Date(lineItems[i].LINE_ITEM_DATE);
+                if (lineItemDate < billingStartDate || lineItemDate > billingEndDate) {
+                    alert(`Line item ${i + 1} date is outside the billing period. Please check your entries.`);
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        function downloadFile(contents) {
+            const blob = new Blob([contents], { type: 'text/plain' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'ledes_98b_output.txt';
+            a.style.display = 'none';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            alert("Your LEDES file has been generated and downloaded. Thanks for using the Bananafoot LEDES conversion program. Now go and re-think your life choices.");
+        }
+
+        window.onload = initializeApp;
     </script>
 </body>
+
 </html>
