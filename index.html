@@ -1,6 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,29 +9,32 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="./style.css" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <h2 class="mb-4">Bananafoot LEDES Converter</h2>
         <h3 class="text-muted mb-4"><i>"Bananafoot: Making your law practice slightly less tedious"</i></h3>
-        <p class="mb-4">This program allows you to enter information to create a LEDES 1998B billing file. LEDES is a standard format for legal invoicing. 
-        For information on the hell-spawn that is the LEDES format see <a href="https://ledes.org/ledes-98b-format" target="_blank">LEDES Format</a>.  
-        LEDES is a text, pipe-delimited format. It was designed by lawyers, which explains a lot. When you click "Done" the program will allow you to save your LEDES file. SORRY, BUT YOU NEED TO ENTER THE INVOICE TOTAL. THE RUNNING TOTAL HERE IS PROVIDED TO CHECK YOUR WORK ONLY.</p>
+        <p class="mb-4">This program allows you to enter information to create a LEDES 1998B billing file. LEDES is a
+            standard format for legal invoicing.
+            For information on the hell-spawn that is the LEDES format see <a href="https://ledes.org/ledes-98b-format"
+                target="_blank">LEDES Format</a>.
+            LEDES is a text, pipe-delimited format. It was designed by lawyers, which explains a lot. When you click
+            "Generate LEDES File" the program will allow you to save your LEDES file.</p>
 
         <form id="ledesForm" class="mb-4">
             <div class="row mb-3">
-               
                 <div class="col-md-3">
                     <p><strong>Lines Total:</strong> <span id="LINE_ITEM_NUMBER" class="badge bg-secondary">0</span></p>
                 </div>
-              <div class="col-md-3">
-                    <label for="INVOICE_TOTAL" class="form-label">Invoice Total (Input):</label>
+                <div class="col-md-3">
+                    <label for="INVOICE_TOTAL" class="form-label">Invoice Total:</label>
                     <input type="text" class="form-control" id="INVOICE_TOTAL" name="INVOICE_TOTAL" required>
                 </div>
                 <div class="col-md-6">
-                    <p><strong>Invoice Total (Running):</strong> <span id="INVOICE_TOTAL_CALC" class="badge bg-primary">0</span></p>
+                    <p><strong>Invoice Total (Running):</strong> <span id="INVOICE_TOTAL_CALC"
+                            class="badge bg-primary">0</span></p>
                 </div>
-                
-               
+            </div>
 
             <h4 class="mb-3">Invoice Information</h4>
             <div class="row g-3">
@@ -68,71 +72,17 @@
                 </div>
                 <div class="col-12">
                     <label for="INVOICE_DESCRIPTION" class="form-label">Invoice Description:</label>
-                    <input type="text" class="form-control" id="INVOICE_DESCRIPTION" name="INVOICE_DESCRIPTION" value="Legal Services">
+                    <input type="text" class="form-control" id="INVOICE_DESCRIPTION" name="INVOICE_DESCRIPTION"
+                        value="Legal Services">
                 </div>
             </div>
 
-            <h4 class="mt-4 mb-3">Line Item Fields</h4>
-            <div class="row g-3">
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_DATE" class="form-label">Line Item Date:</label>
-                    <input type="date" class="form-control" id="LINE_ITEM_DATE" name="LINE_ITEM_DATE" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="TIMEKEEPER_NAME" class="form-label">Timekeeper Name:</label>
-                    <input type="text" class="form-control" id="TIMEKEEPER_NAME" name="TIMEKEEPER_NAME" required>
-                (Last, First)</div>
-                <div class="col-md-3">
-                    <label for="TIMEKEEPER_ID" class="form-label">Timekeeper ID:</label>
-                    <input type="text" class="form-control" id="TIMEKEEPER_ID" name="TIMEKEEPER_ID" required>
-                </div>
-              
-               
-                <div class="col-md-3">
-                    <label for="TIMEKEEPER_CLASSIFICATION" class="form-label">Timekeeper Class:</label>
-                    <input type="text" class="form-control" id="TIMEKEEPER_CLASSIFICATION" name="TIMEKEEPER_CLASSIFICATION" value="PARTNR" required>
-                    <small class="form-text text-muted">See <a href="https://ledes.org/loc-revised-timekeeper-classification-codes-august-2014" target="_blank">Classification Codes</a> (e.g. PARTNR, ASSOC)</small>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_NUMBER_OF_UNITS" class="form-label">Line Item Units:</label>
-                    <input type="number" class="form-control" id="LINE_ITEM_NUMBER_OF_UNITS" name="LINE_ITEM_NUMBER_OF_UNITS" required>
-                </div>
-                   <div class="col-9">
-                    <label for="LINE_ITEM_DESCRIPTION" class="form-label">Description:</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_DESCRIPTION" name="LINE_ITEM_DESCRIPTION" required>
-                </div>
-               
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_UNIT_COST" class="form-label">Line Item Unit Cost:</label>
-                    <input type="number" class="form-control" id="LINE_ITEM_UNIT_COST" name="LINE_ITEM_UNIT_COST" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_TASK_CODE" class="form-label">Task Code (UTBMS):</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_TASK_CODE" name="LINE_ITEM_TASK_CODE" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_EXPENSE_CODE" class="form-label">Expense Code:</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_EXPENSE_CODE" name="LINE_ITEM_EXPENSE_CODE" required>
-                    <small class="form-text text-muted">See <a href="https://ledes.org/wp-content/uploads/2015/07/2013-LOC-Revised-UTBMS-Expense-Codes.pdf" target="_blank">Expense Codes</a> (E112 = FedEx/UPS)</small>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_ACTIVITY_CODE" class="form-label">Activity Code:</label>
-                    <input type="text" class="form-control" id="LINE_ITEM_ACTIVITY_CODE" name="LINE_ITEM_ACTIVITY_CODE" required>
-                    <small class="form-text text-muted">See <a href="https://ledes.org/wp-content/uploads/2016/04/2013-LOC-Revised-UTBMS-Activity-Codes.pdf" target="_blank">Activity Codes</a> (A104 = Review/Analyze)</small>
-                </div>
-                <div class="col-md-3">
-                    <label for="EXP_FEE_INV_ADJ_TYPE" class="form-label">Expense(E)/Fee(F):</label>
-                    <input type="text" class="form-control" id="EXP_FEE_INV_ADJ_TYPE" name="EXP_FEE_INV_ADJ_TYPE" value="F" required>
-                </div>
-                <div class="col-md-3">
-                    <label for="LINE_ITEM_ADJUSTMENT_AMOUNT" class="form-label">Adjustment Amount:</label>
-                    <input type="number" class="form-control" id="LINE_ITEM_ADJUSTMENT_AMOUNT" name="LINE_ITEM_ADJUSTMENT_AMOUNT" value="0">
-                </div>
-            </div>
+            <h4 class="mt-4 mb-3">Line Items</h4>
+            <div id="lineItemsContainer"></div>
+            <button type="button" class="btn btn-secondary mt-2" onclick="addLineItem()">Add Line Item</button>
 
             <div class="mt-4">
-                <button type="button" class="btn btn-primary" onclick="lineItemSubmit()">Submit Line Item</button>
-                <button type="button" class="btn btn-success" onclick="invoiceSubmit()">Done</button>
+                <button type="button" class="btn btn-success" onclick="generateLEDESFile()">Generate LEDES File</button>
             </div>
         </form>
     </div>
@@ -140,4 +90,5 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="./app.js"></script>
 </body>
+
 </html>
