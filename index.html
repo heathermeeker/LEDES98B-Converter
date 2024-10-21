@@ -6,12 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Bananafoot LEDES Converter</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body {
-            padding-top: 20px;
-            padding-bottom: 20px;
-        }
-    </style>
+    <link href="./style.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -143,100 +138,6 @@
     </div>
     <script src="https://js.puter.com/v2/"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        let fileContents = "LEDES1998B[]INVOICE_DATE|INVOICE_NUMBER|CLIENT_ID|LAW_FIRM_MATTER_ID|INVOICE_TOTAL|BILLING_START_DATE|BILLING_END_DATE|INVOICE_DESCRIPTION|LINE_ITEM_NUMBER|EXP/FEE/INV_ADJ_TYPE|LINE_ITEM_NUMBER_OF_UNITS|LINE_ITEM_ADJUSTMENT_AMOUNT|LINE_ITEM_TOTAL|LINE_ITEM_DATE|LINE_ITEM_TASK_CODE|LINE_ITEM_EXPENSE_CODE|LINE_ITEM_ACTIVITY_CODE|TIMEKEEPER_ID|LINE_ITEM_DESCRIPTION|LAW_FIRM_ID|LINE_ITEM_UNIT_COST|TIMEKEEPER_NAME|TIMEKEEPER_CLASSIFICATION|CLIENT_MATTER_ID[]";
-        let lineItemNumber = 0;
-        let invoiceTotal = 0;
-
-        function setDefaults() {
-            const today = new Date();
-            document.getElementById("INVOICE_DATE").value = today.toISOString().split('T')[0];
-            getPreviousMonthDates(today);
-        }
-
-        function updateLineItemTotal() {
-            const units = parseFloat(document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value) || 0;
-            const cost = parseFloat(document.getElementById("LINE_ITEM_UNIT_COST").value) || 0;
-            const adjustmentAmount = parseFloat(document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value) || 0;
-            const total = (units * cost) + adjustmentAmount;
-            return total.toFixed(2);
-        }
-
-        function lineItemSubmit() {
-            const lineItemTotal = updateLineItemTotal();
-            lineItemNumber++;
-            invoiceTotal += parseFloat(lineItemTotal);
-
-            const delimiter = "|";
-            const file_delimiter = "[]";
-            let printLine = [
-                formatDateYYYYMMDD(document.getElementById("INVOICE_DATE").value),
-                document.getElementById("INVOICE_NUMBER").value,
-                document.getElementById("CLIENT_ID").value,
-                document.getElementById("LAW_FIRM_MATTER_ID").value,
-                document.getElementById("INVOICE_TOTAL").value,
-                formatDateYYYYMMDD(document.getElementById("BILLING_START_DATE").value),
-                formatDateYYYYMMDD(document.getElementById("BILLING_END_DATE").value),
-                document.getElementById("INVOICE_DESCRIPTION").value,
-                lineItemNumber,
-                document.getElementById("EXP_FEE_INV_ADJ_TYPE").value,
-                document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value,
-                document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value,
-                lineItemTotal,
-                formatDateYYYYMMDD(document.getElementById("LINE_ITEM_DATE").value),
-                document.getElementById("LINE_ITEM_TASK_CODE").value,
-                document.getElementById("LINE_ITEM_EXPENSE_CODE").value,
-                document.getElementById("LINE_ITEM_ACTIVITY_CODE").value,
-                document.getElementById("TIMEKEEPER_ID").value,
-                document.getElementById("LINE_ITEM_DESCRIPTION").value,
-                document.getElementById("LAW_FIRM_ID").value,
-                document.getElementById("LINE_ITEM_UNIT_COST").value,
-                document.getElementById("TIMEKEEPER_NAME").value,
-                document.getElementById("TIMEKEEPER_CLASSIFICATION").value,
-                document.getElementById("CLIENT_MATTER_ID").value
-            ].join(delimiter);
-
-            fileContents += printLine + file_delimiter + "\n";
-            document.getElementById("INVOICE_TOTAL_CALC").textContent = invoiceTotal.toFixed(2);
-            document.getElementById("LINE_ITEM_NUMBER").textContent = lineItemNumber;
-
-            // Reset line item fields
-            document.getElementById("LINE_ITEM_DATE").value = "";
-            //These fields should persist for useability, for most users, -- uncomment if you don't prefer that
-            //document.getElementById("TIMEKEEPER_ID").value = "";
-            //document.getElementById("LINE_ITEM_DESCRIPTION").value = "";
-            document.getElementById("LINE_ITEM_NUMBER_OF_UNITS").value = "";
-            document.getElementById("LINE_ITEM_UNIT_COST").value = "";
-            document.getElementById("LINE_ITEM_ADJUSTMENT_AMOUNT").value = "0";
-        }
-
-        function invoiceSubmit() {
-            const blob = new Blob([fileContents], { type: 'text/plain' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'ledes_98b_output.txt';
-            a.style.display = 'none';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            alert("Your file has been saved. Thanks for using the Bananafoot LEDES conversion program. Now go and re-think your life choices.");
-        }
-
-        function getPreviousMonthDates(date) {
-            const firstDayOfGivenMonth = new Date(date.getFullYear(), date.getMonth(), 1);
-            const lastDayOfPreviousMonth = new Date(firstDayOfGivenMonth);
-            lastDayOfPreviousMonth.setDate(lastDayOfPreviousMonth.getDate() - 1);
-            document.getElementById("BILLING_END_DATE").value = lastDayOfPreviousMonth.toISOString().split('T')[0];
-
-            const firstDayOfPreviousMonth = new Date(lastDayOfPreviousMonth.getFullYear(), lastDayOfPreviousMonth.getMonth(), 1);
-            document.getElementById("BILLING_START_DATE").value = firstDayOfPreviousMonth.toISOString().split('T')[0];
-        }
-
-        function formatDateYYYYMMDD(dateString) {
-            return dateString.replace(/-/g, '');
-        }
-
-        window.onload = setDefaults;
-    </script>
+    <script src="./app.js"></script>
 </body>
 </html>
