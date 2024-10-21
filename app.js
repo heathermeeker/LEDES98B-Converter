@@ -157,4 +157,51 @@ function formatDateYYYYMMDD(dateString) {
     return dateString.replace(/-/g, '');
 }
 
-window.onload = setDefaults;
+function generatePreview() {
+    // Generate the LEDES content
+    let previewContent = "LEDES1998B[]\n";
+    previewContent += "INVOICE_DATE|INVOICE_NUMBER|CLIENT_ID|LAW_FIRM_MATTER_ID|INVOICE_TOTAL|BILLING_START_DATE|BILLING_END_DATE|INVOICE_DESCRIPTION|LINE_ITEM_NUMBER|EXP/FEE/INV_ADJ_TYPE|LINE_ITEM_NUMBER_OF_UNITS|LINE_ITEM_ADJUSTMENT_AMOUNT|LINE_ITEM_TOTAL|LINE_ITEM_DATE|LINE_ITEM_TASK_CODE|LINE_ITEM_EXPENSE_CODE|LINE_ITEM_ACTIVITY_CODE|TIMEKEEPER_ID|LINE_ITEM_DESCRIPTION|LAW_FIRM_ID|LINE_ITEM_UNIT_COST|TIMEKEEPER_NAME|TIMEKEEPER_CLASSIFICATION|CLIENT_MATTER_ID[]\n";
+
+    // Add invoice header
+    const invoiceFields = [
+        "INVOICE_DATE", "INVOICE_NUMBER", "CLIENT_ID", "LAW_FIRM_MATTER_ID",
+        "INVOICE_TOTAL", "BILLING_START_DATE", "BILLING_END_DATE", "INVOICE_DESCRIPTION"
+    ];
+    previewContent += invoiceFields.map(field => document.getElementById(field).value).join("|") + "|";
+
+    // Add line items
+    const lineItems = fileContents.split("[]").slice(1, -1);
+    previewContent += lineItems.join("[]") + "[]\n";
+
+    // Display the preview
+    const previewWindow = window.open("", "LEDES Preview", "width=800,height=600");
+    previewWindow.document.write(`
+        <html>
+            <head>
+                <title>LEDES Preview</title>
+                <style>
+                    body { font-family: monospace; white-space: pre-wrap; }
+                </style>
+            </head>
+            <body>
+                <h2>LEDES File Preview</h2>
+                <pre>${previewContent}</pre>
+                <button onclick="window.close()">Close Preview</button>
+            </body>
+        </html>
+    `);
+}
+
+// Add a preview button to the HTML
+function addPreviewButton() {
+    const previewButton = document.createElement('button');
+    previewButton.textContent = 'Preview LEDES File';
+    previewButton.onclick = generatePreview;
+    document.querySelector('form').appendChild(previewButton);
+}
+
+// Call this function when the page loads
+window.onload = function() {
+    setDefaults();
+    addPreviewButton();
+};
